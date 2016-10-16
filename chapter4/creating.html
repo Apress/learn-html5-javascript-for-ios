@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+    <title>Chapter 4 - Creating DOM Elements</title>
+    <meta name="viewport" content="width=device-width"/>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="/js/jquery-1.6.4.min.js"></script>
+</head>
+<body>
+<h1><a href="index.html">Chapter 4 - Creating DOM Elements</a></h1>
+<hr>
+<p>An example creating DOM elements with JavaScript.</p>
+<script>
+    var elt = document.createElement("div");
+    elt.onclick = function () {
+        alert("new element")
+    };
+    elt.style.border = "1px solid red";
+    elt.style.width = "200px";
+    elt.style.height = "200px";
+    elt.innerHTML = "click me";
+    document.body.appendChild(elt);
+</script>
+</body>
+</html>

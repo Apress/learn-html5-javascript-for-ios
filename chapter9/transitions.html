@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+    <title>Chapter 8 - Transition Basics</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+    <script type="text/javascript" src="/js/jquery-1.6.4.min.js"></script>
+</head>
+<body>
+<h1>Chapter 8 - Transition Basics</h1>
+<hr>
+<style type="text/css">
+    .demo1a, .demo1b {
+        color: red;
+    }
+
+    .demo1a:hover {
+        color: blue;
+    }
+
+    .demo1b {
+        -webkit-transition: color 1s ease-in;
+    }
+
+    .demo1b:hover {
+        color: blue;
+
+    }
+
+    #demo2 {
+        width: 300px;
+        height: 300px;
+        border: 1px solid #000;
+    }
+
+    #demo2 img {
+        position: relative;
+        top: 0px;
+        left: 0px;
+        -webkit-transition: top 2s ease-in, left 2s ease-in;
+    }
+
+    #demo2:hover img {
+        top: 280px;
+        left: 280px;
+    }
+
+    .bluedot {
+        width: 10px;
+        height: 10px;
+        border-radius: 5px;
+        background: -webkit-radial-gradient(silver, #0066cc, #000066);
+        opacity:1;
+        -webkit-transition-property: opacity;
+        -webkit-transition-duration: .5s;
+    }
+
+</style>
+<script>
+    var bit = 0;
+    setInterval(function() {document.querySelector(".bluedot").style.opacity=bit%2;bit++},1100);
+</script>
+
+<h2>Transition Demo 1</h2>
+<div>
+    <a href="" class="demo1a">Link Hover</a>
+    <a href="" class="demo1b">Link Transition</a>
+</div>
+
+<h2>Transition Demo 2</h2>
+<div id="demo2" class="change2"><img src="images/blue_dot.png"></div>
+
+
+<h2>Transition Demo 3</h2>
+<div id="demo3" class="change3">
+    <div class="bluedot"></div>
+</div>
+
+
+</body>
+</html>

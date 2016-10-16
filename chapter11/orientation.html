@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+    <title>Chapter 11 - Orientaiton</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+<h1><a href="index.html">Chapter 11 - Orientaiton</a></h1>
+<hr><style>
+    #x_div{height:2px;background:#000;width:200px;}
+</style>
+<h2>Compass</h2>
+<div>Current Heading is <span id="heading"></span></div>
+<div>Compass Accuracy is <span id="accuracy"></span></div>
+<div>Z-Axis(alpha) is <span id="alpha"></span></div>
+<div>X-Axis(beta) is <span id="beta"></span></div>
+<div>Y-Axis(gamma) is <span id="gamma"></span></div>
+<div class="x_div"></div>
+<script type="text/javascript">
+window.ondeviceorientation = function(e) {
+    var heading = e.webkitCompassHeading;
+    var accuracy = e.webkitCompassAccuracy;
+    var alpha = e.alpha;
+    var beta = e.beta;
+    var gamma = e.gamma;
+    document.querySelector("#heading").innerHTML = heading;
+    document.querySelector("#accuracy").innerHTML = accuracy;
+    document.querySelector("#alpha").innerHTML = alpha;
+    document.querySelector("#beta").innerHTML = beta;
+    document.querySelector("#gamma").innerHTML = gamma;
+    document.querySelector("#x_div").style.webkitTransform('rotateX('+beta+'deg)');
+
+}
+</script>
+
+</body>
+</html>

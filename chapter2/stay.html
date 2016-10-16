@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+    <title>Stay Tuned</title>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/chapter2.css" type="text/css" />
+</head>
+<body>
+<h1>Stay Tuned</h1>
+<hr><form id="test" action="stay.html" >
+Email: <input type="email" required="required" placeholder="Enter an email"><br>
+<input type="submit">
+</form>
+<script>
+    var f  = document.querySelector("form");
+        f.onsubmit = function() {
+        if (f.checkValidity()) {
+            alert("form ok");
+        } else {
+            alert("form not ok");
+        }
+    };
+</script>
+</body>
+</html>

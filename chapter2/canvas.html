@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+    <title>Chapter 2 - Canvas</title>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/chapter2.css" type="text/css" />
+</head>
+<body>
+<h1>Chapter 2 - Canvas</h1>
+<hr>
+<canvas id="simplecanvas"></canvas>
+<script type="text/javascript">
+var canvas = document.querySelector('#simplecanvas');
+var ctx = canvas.getContext('2d');
+ctx.fillStyle='rgb(255,0,0)';
+ctx.fillRect(0,0,100,100);
+</script>
+
+</body>
+</html>

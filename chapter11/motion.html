@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+    <title>Chapter 11 - Motion</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+<h1><a href="index.html">Chapter 11 - Motion</a></h1>
+<hr><p>Acceleration</p>
+<div>X Acceleration <span id="x"></span></div>
+<div>Y Acceleration <span id="y"></span></div>
+<div>Z Acceleration <span id="z"></span></div>
+<div>Rotation Rate <span id="rotationRate"></span></div>
+<div>Max X <span id="maxX"></span></div>
+<script type="text/javascript">
+var maxX = 0;
+window.ondevicemotion = function(e) {
+    var x = e.acceleration.x;
+	if (x > maxX) maxX = x;
+    var y = e.acceleration.y;
+    var z = e.acceleration.z;
+    var rotationRate = e.rotationRate;
+    document.querySelector("#x").innerHTML = x;
+    document.querySelector("#y").innerHTML = y;
+    document.querySelector("#z").innerHTML = z;
+    document.querySelector("#rotationRate").innerHTML = rotationRate.alpha + "," + rotationRate.beta + "," + rotationRate.gamma;
+    document.querySelector("#maxX").innerHTML = maxX;
+}
+</script>
+</body>
+</html>

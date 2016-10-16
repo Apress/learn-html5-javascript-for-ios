@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+    <title>Chapter 9 - Images</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+<h1><a href="index.html">Chapter 9 - Images</a></h1>
+<hr><h2>Original Image</h2>
+<img src="images/the-candle-lab.jpg">
+<h2>Processed Image</h2>
+<button onclick="clearCanvas()">Clear</button>
+<button onclick="gray()">Grayscale</button>
+<form>
+    Threshold <input type="range" min="0" max="255" onchange="threshhold(this.value)" id="slider"/><span
+        id="thresh"></span>
+</form>
+<br>
+
+<canvas id="processor" width="300" height="200" class="workarea"></canvas>
+
+<script type="text/javascript">
+    var img = new Image();
+    img.src = "images/the-candle-lab.jpg";
+    var canvas = document.querySelector("#processor");
+    var ctx = canvas.getContext("2d");
+
+    window.onload = function() {
+        document.querySelector("#thresh").innerHTML = document.querySelector("#slider").value;
+    }
+
+    function gray() {
+        threshhold(0);
+    }
+
+    function clearCanvas() {
+        document.querySelector("#slider").value = 128;
+        document.querySelector("#thresh").innerHTML = 128;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.restore();
+    }
+
+    function threshhold(val) {
+        document.querySelector("#thresh").innerHTML = val;
+        document.querySelector("#slider").value = val;
+        ctx.drawImage(img, 0, 0);
+        var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        var newImageData = ctx.createImageData(300, 200);
+        var data = imageData.data;
+        var newData = newImageData.data;
+        for (var i = 0; i < data.length; i += 4) {
+            var red = data[i]; // red
+            var green = data[i + 1]; // green
+            var blue = data[i + 2]; // blue
+            var alpha = data[i + 3];
+            var gray = (red + green + blue) / 3
+            if (gray < val) {
+                gray = 255; // white
+            }
+            newData[i] = gray;
+            newData[i + 1] = gray;
+            newData[i + 2] = gray;
+            newData[i + 3] = alpha;
+        }
+        ctx.putImageData(newImageData, 0, 0);
+    }
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+    <title>Chapter 4 - First Class Functions</title>
+    <meta name="viewport" content="width=device-width"/>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="/js/jquery-1.6.4.min.js"></script>
+</head>
+<body>
+<h1><a href="index.html">Chapter 4 - First Class Functions</a></h1>
+<hr>
+<p>An example of first class functions in JavaScript.</p>
+<script>
+
+    // normal function
+    function foo(a, b) {
+        return a + b;
+    }
+    // normal function as variable
+    var foo2 = function(a, b) {
+        return a + b;
+    }
+    // function as parameter to another function
+    function foo3(foo2, a, b) {
+        return foo2(a, b);
+    }
+    alert(foo(1, 2) + "," + foo2(1, 2) + "," + foo3(foo2, 1, 2));
+
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+    <title>Chapter 4 - Ajax Example</title>
+    <meta name="viewport" content="width=device-width"/>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="/js/jquery-1.6.4.min.js"></script>
+</head>
+<body>
+<h1><a href="index.html">Chapter 4 - Ajax Example</a></h1>
+<hr>
+<p>An example of loading content via Ajax.</p>
+
+<div id="foo"></div>
+<script>
+    var req = new XMLHttpRequest();
+    var url = "sample.txt";
+    var elt = document.getElementById("foo");
+
+    req.open("GET", url);
+    req.onreadystatechange = function() {
+        if (req.readyState == 4) {
+            var txt = req.responseText;
+            elt.innerHTML = txt;
+        }
+    };
+    req.send();
+</script>
+</body>
+</html>

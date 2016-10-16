@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+<head>
+    <title>Chapter 4 - Ajax #2</title>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8">
+    <script type="text/javascript" src="/js/jquery-1.6.4.min.js"></script>
+</head>
+<body>
+<h1><a href="index.html">Chapter 4 - Ajax #2</a></h1>
+<hr><script type="text/javascript">
+
+    $().ready(function(){
+       $("#about").load('content.html').delay(500).fadeIn('slow');
+    });
+
+</script>
+<div id="about" style="display:none;"></div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+    <title>Chapter 2 - Edits</title>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/chapter2.css" type="text/css" />
+</head>
+<body>
+<h1>Chapter 2 - Edits</h1>
+<hr><p>Click on the silly text below to edit.</p>
+<div id="test" contenteditable="true">This is some silly text.</div>
+<button onclick="save()">Save</button>
+
+<script type="text/javascript">
+	function save() {
+		var content = document.querySelector("#test").innerHTML;
+		alert(content); // or do something else
+	}
+
+</script>
+
+</body>
+</html>

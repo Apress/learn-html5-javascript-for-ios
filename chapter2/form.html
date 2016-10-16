@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+    <title>Chapter 2 - Form Example</title>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/chapter2.css" type="text/css" />
+</head>
+<body>
+<h1>Chapter 2 - Form Example</h1>
+<hr><h2>New Form Elements</h2>
+<form id="test" action="form.html" >
+Number: <input type="number" name="number" placeholder="Enter a number" autofocus="autofocus" required><br>
+Email: <input type="email" required="required" placeholder="Enter an email"><br>
+URL: <input type="url" required="required"><br>
+Date: <input type="date" required="required"><br>
+Week: <input type="week" required="required"><br>
+Month: <input type="month" required="required"><br>
+DateTime: <input type="datetime" required="required"><br>
+Time: <input type="time" required="required"><br>
+Range: <input type="range" required="required"><br>
+Search: <input type="search" required="required"><br>
+Tel: <input type="tel" required="required"><br>
+<input type="submit">
+</form>
+<br><br><br><br><br><br>
+<script>
+    var f  = document.querySelector("form");
+        f.onsubmit = function() {
+        if (f.checkValidity()) {
+            alert("form ok");
+        } else {
+            alert("form not ok");
+        }
+    };
+</script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+    <title>Chapter 9 - Interacting</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+<h1><a href="index.html">Chapter 9 - Interacting</a></h1>
+<hr><style>
+    .workarea {border: 1px solid #000; }
+</style>
+<h2>Touch Canvas</h2>
+<p>Tuch to make a dot. Swipe left to clear.</p>
+<canvas id="touch_canvas" width="300" height="300" class="workarea"></canvas>
+<script type="text/javascript">
+
+    var canvas = document.querySelector("#touch_canvas");
+    var ctx = canvas.getContext("2d");
+    var curX,curY;
+
+    var startX = 0;
+    var startY = 0;
+    var endX = 0;
+    var endY = 0;
+
+    canvas.ontouchstart = function(evt) {
+        startX = evt.pageX;
+        startY = evt.pageY;
+        touchXY(evt);
+    }
+
+    canvas.ontouchend = function(evt) {
+        endX = evt.pageX;
+        endY = evt.pageY;
+        if ((startX - endX) < -40) {
+            clearCanvas()
+        }
+    }
+
+    canvas.onmousedown = function(evt) {
+        startX = evt.pageX;
+        startY = evt.pageY;
+        touchXY(evt);
+    }
+    canvas.onmouseup = function(evt) {
+        endX = evt.pageX;
+        endY = evt.pageY;
+        if ((startX - endX) > 40) {
+            clearCanvas()
+        }
+    }
+
+    function touchXY(e) {
+        curX = e.pageX - canvas.offsetLeft;
+        curY = e.pageY - canvas.offsetTop;
+        drawCircle(curX, curY);
+    }
+
+    function drawCircle(x, y) {
+        ctx.beginPath();
+        ctx.arc(x, y, 10, 0, Math.PI * 2, false);
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = "rgb(0,0,255)";
+        ctx.fillStyle = "rgb(0,0,255)";
+        ctx.stroke();
+        ctx.closePath();
+        ctx.fill();
+    }
+
+    function clearCanvas() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.restore();
+    }
+
+</script>
+
+</body>
+</html>

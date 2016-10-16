@@ -1,0 +1,20 @@
+<html>
+<body onload="bodyload()">
+<p>This could take some time as this page is loading a 10M image.</p>
+
+<p><img src="images/10meg.jpg"></p>
+<script type="text/javascript">
+
+    document.addEventListener('DOMContentLoaded', domready());
+
+    function bodyload() {
+        alert('body load');
+    }
+
+    function domready() {
+        alert('dom ready');
+    }
+
+</script>
+</body>
+</html>

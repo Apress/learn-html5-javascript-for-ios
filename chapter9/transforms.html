@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+    <title>Chapter 8 - Transforms</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+    <script type="text/javascript" src="/js/jquery-1.6.4.min.js"></script>
+</head>
+<body>
+<h1>Chapter 8 - Transforms</h1>
+<hr><style>
+    h2 {
+        clear: both;
+    }
+
+    .demobox {
+        height: 100px;
+        width: 100px;
+        border: 1px solid #000;
+        float: left;
+        margin: 40px;
+    }
+
+    .rot45 {
+        -webkit-transform: rotate(45deg);
+        -webkit-transition: -webkit-transform 1s ease-in;
+    }
+
+    .rot45:hover {
+        -webkit-transform: rotate(0deg);
+    }
+
+    .zoom {
+        width: 300px;
+        height: 200px;
+        border: 1px solid #000;
+        overflow: hidden;
+    }
+
+    .scaledimg {
+        -webkit-transform: scale(1);
+        -webkit-transition: -webkit-transform 1s ease-in;
+    }
+
+    .scaledimg:hover {
+        -webkit-transform: scale(3);
+    }
+
+    .rotate {
+        height: 200px;
+        width: 300px;
+        border: 1px solid #000;
+        padding: 0px;
+    }
+
+    .rotate img {
+        -webkit-transform: perspective(500px) rotate3d(1, 1, 0, 80deg);
+        -webkit-transition: -webkit-transform 3s;
+    }
+
+    .rotate img:hover {
+        -webkit-transform: rotate3d(1, 1, 0, 0deg);
+
+    }
+
+    .flip,.flipped {
+        height: 210px;
+        width: 310px;
+        border: 1px solid #000;
+        padding: 5px;
+        background: red;
+        -webkit-perspective: 800;
+        -webkit-transition: -webkit-transform 1s;
+        -webkit-transform-style: preserve-3d;
+
+    }
+
+    .flipped {
+        background: blue;
+        -webkit-transform: rotateY(180deg);
+    }
+    
+</style>
+<h2>2D Transforms - Rotation</h2>
+<p>Mouseover for the transform.</p>
+<div class="demobox"></div>
+<div class="demobox rot45">45</div>
+
+<h2>2D Transforms - Scale</h2>
+<p>Mouseover for the transform.</p>
+<div class="zoom"><img src="images/figlio.jpg" class="scaledimg"></div>
+<br><br><br><br><br>
+
+<h2>3D Transforms - Rotating</h2>
+<p>Mouseover for the transform.</p>
+<div class="rotate"><img src="images/figlio.jpg"></div>
+<br><br><br><br>
+
+
+<h2>3D Flip</h2>
+<p>Click to flip.</p>
+<div class="flip" onclick='this.className="flipped"'></div>
+
+
+
+</body>
+</html>

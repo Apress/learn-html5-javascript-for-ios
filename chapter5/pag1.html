@@ -1,0 +1,65 @@
+<head>
+    <title>Welcome To Grandview Ave.</title>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="css/jquery.mobile-1.0b3.min.css" />
+    <link rel="stylesheet" href="css/grandviewave.css" />
+    <script src="js/jquery-1.6.2.min.js"></script>
+    <script src="js/jquery.mobile-1.0b3.min.js"></script>
+    <script type="text/javascript">
+    $().ready(function(){
+        $.mobile.pageLoading();
+        $.get('api/cats.php', function(data) {
+            $('#cats').html(data);
+            $('#cats ul').listview();
+            $.mobile.pageLoading(true);
+        });
+        preload();
+    });
+    function preload() {
+<?php
+for ($i=0;$i<7;$i++) {
+?>
+        $.get('api/profiles.php?id=<?=$i?>', function(data) {
+            $('#list_<?=$i?>').html(data);
+            $('#cat_<?=$i?>').page();
+        });
+<? }?>
+ }
+</script>
+</head>
+---
+<div data-role="page">
+  <header data-role="header">
+    <div class="header1">
+        <img src="images/logo.png" alt="welcome to grandviewave.com">
+    </div>
+  </header>
+  <section data-role="content">
+     <div id="cats"></div>
+  </section>
+</div>
+---
+<?
+for ($i=0;$i<7;$i++) {
+?>
+<div data-role="page" id="cat_<?=$i?>">
+    <header data-role="header">
+      <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+      <div class="header2">
+        <img src="images/logo.png" alt="gave.com"/>
+      </div>
+   </header>
+    <div data-role="content">
+        <div id="list_<?=$i?>"></div>
+    </div>
+</div>
+<? }?>
+---
+<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="a">
+<li data-role="list-divider">Business Directory</li>
+<li><a href="#cat_0">All</a></li>
+<? foreach ($cats as $cat) { ?>
+<li><a href="#cat_<?=$cat->id?>"><?=$cat->name?></a></li>
+<? } ?>
+</ul>
+

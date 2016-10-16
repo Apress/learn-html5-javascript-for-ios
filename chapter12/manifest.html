@@ -1,0 +1,39 @@
+<!doctype html>
+<html manifest="chapter12.manifest.html">
+<head>
+    <title>Chapter 12 - Manifest</title>
+    <meta name="viewport" content="width=device-width"/>
+    <link rel="stylesheet" href="css/ch12.css" type="text/css"/>
+</head>
+<body>
+<h1><a href="index.html">Chapter 12 - Manifest</a></h1>
+<hr>
+<p>The Time is: 2012-03-03T12:06:54-05:00</p>
+
+<p>
+    <button onclick="reload()">Reload</button>
+</p>
+<div class="thumb"><img src="images/akada-salon_thumb.jpg"><br>Akada Salon</div>
+<div class="thumb"><img src="images/grandview-cafe_thumb.jpg"><br>Grandview Cafe</div>
+<div class="thumb"><img src="images/jenis-ice-cream_thumb.jpg"><br>Jeni's Ice Creme</div>
+<div class="thumb"><img src="images/the-candle-lab_thumb.jpg"><br>The Candle Lab</div>
+<div class="thumb"><img src="images/the-grandview-theater_thumb.jpg"><br>The Grandview Theater</div>
+
+<script type="text/javascript">
+    function reload() {
+        window.location.reload();
+    }
+    // example of how to use applicationCache
+    var cache = window.applicationCache;
+    cache.addEventListener('updateready', function(e) {
+        if (cache.status == window.cache.UPDATEREADY) {
+            cache.swapCache();
+            if (confirm('load new cache?')) {
+                reload();
+            }
+        }
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!doctype html>
+<head>
+    <title>Chapter 2 - Putting It All Together #2</title>
+    <meta name="viewport" content="width=device-width"/>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/chapter2.css" type="text/css"/>
+</head>
+<body>
+<h1>Chapter 2 - Putting It All Together #2</h1>
+<hr>
+<form id="test" action="">
+    Email: <input type="email" required placeholder="Enter an email"><br>
+    <input type="submit">
+</form>
+<script type="text/javascript">
+    var f = document.querySelector("form");
+    f.onsubmit = function() {
+        if (f.checkValidity()) {
+            alert("form ok");
+        } else {
+            alert("form not ok");
+        }
+    };
+</script>
+
+</body>
+<html>

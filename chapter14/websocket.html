@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+    <title>Chapter 14 - Web Sockets</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+<h1><a href="index.html">Chapter 14 - Web Sockets</a></h1>
+<hr><script src="http://cdn.socket.io/stable/socket.io.js"></script>
+<button onclick="test()">Web Socket Test</button>
+<script language="javascript" type="text/javascript">
+    var websocket = new WebSocket('ws://echo.websocket.org/');
+
+    function test() {
+        websocket.send("This Book Rocks!");
+    }
+
+    websocket.onmessage = function(evt) {
+        alert('RESPONSE: ' + evt.data);
+        websocket.close();
+    };
+
+    </script>
+</script>
+
+</body>
+</html>

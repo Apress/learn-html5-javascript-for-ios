@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+    <title>Chapter 13 - AB Testing</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+<h1><a href="index.html">Chapter 13 - Benchmark Testing</a></h1>
+<hr><style>
+    .abtest {
+        display: none;
+    }
+</style>
+<div id="a" class="abtest">Usually this is the original version (Version A).</div>
+<div id="b" class="abtest">Usually this is the new version (Version B).</div>
+
+<script type="text/javascript">
+
+    function getCookie(name) {
+        var result = "";
+        var start = document.cookie.indexOf(name + "=");
+        var end;
+        if (start != -1) {
+            start += (name.length + 1);
+            end = document.cookie.indexOf(";", start);
+            if (end == -1)
+                end = document.cookie.length;
+            result = unescape(document.cookie.substring(start, end));
+        }
+        return result;
+    }
+
+    function setCookie(name, value, expire_days) {
+        var expire = new Date();
+        expire.setDate(expire.getDate() + expire_days);
+        var value = escape(value) + ((expire_days == null) ? "" : "; expires=" + expire.toUTCString());
+        document.cookie = name + "=" + value;
+    }
+
+    var random = Math.floor(Math.random() * 100) + 1;
+    var abcookie = getCookie("abtest");
+    if (abcookie == "") {
+        // if greater than 50 set to version 'a' otherwise 'b'
+        (random > 50) ? setCookie("abtest", "a", 30) : setCookie("abtest", "b", 30);
+    }
+    if (abcookie == "a") {
+        document.querySelector("#a").style.display = 'inline';
+    } else {
+        document.querySelector("#b").style.display = 'inline';
+    }
+
+
+</script>
+
+
+
+</body>
+</html>

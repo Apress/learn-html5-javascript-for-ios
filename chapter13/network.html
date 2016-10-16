@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+    <title>Chapter 13 - Network Testing</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+<h1><a href="index.html">Chapter 13 - Benchmark Testing</a></h1>
+<hr><script src="/js/jquery-1.6.4.min.js"></script>
+
+<button onclick="networkTest()">Test Download</button>
+
+<script type="text/javascript">
+    function Benchmark() {
+        this.startTime = "";
+        this.endTime = "";
+        this.start = function() {
+            this.startTime = new Date().getTime();
+        };
+        this.stop = function() {
+            this.endTime = new Date().getTime();
+        };
+        this.get = function() {
+            return this.endTime - this.startTime;
+        };
+    }
+
+    function networkTest() {
+        var bench = new Benchmark();
+        bench.start();
+        $.ajax({
+            url: "large.html",
+            success: function() {
+                bench.stop();
+                alert("Time to download is:" + bench.get());
+            }
+        });
+    }
+
+</script>
+
+
+
+</body>
+</html>

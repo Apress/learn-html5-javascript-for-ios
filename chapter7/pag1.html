@@ -1,0 +1,59 @@
+<?
+$lat = $_GET("lat");
+$lon = $_GET("lon");
+if ($lat == "") {
+?>
+<script type="text/javascript">
+    $().ready(function() {
+        updateLocation = navigator.geolocation.watchPosition(successGPS, errorGPS, {enableHighAccuracy : true});
+    });
+    function successGPS(position) {
+        var url = "near.php?lat="+ position.coords.latitude + "&lon=" + position.coords.longitude;
+        location.href=url;
+    }
+
+    function errorGPS() {
+        alert('GPS Error');
+    }
+
+</script>
+<?
+} else {
+function getDistance($lat1,$lon1,$lat2,$lon2) {
+    $dlat = ($lat2-$lat1)*pi() / 180;
+    $dlon = ($lon2-$lon1)*pi() / 180;
+    $a= sin($dlat/2)*sin($dlat/2)+cos($lat1 * pi()/180) * cos($lat2 *pi()/180) * sin($dlon/2) * sin ($dlon/2);
+    $c=2 * atan2(sqrt($a),sqrt(1-$a));
+    $meters = 6378140 * $c; // in meters
+    return $meters;
+}
+
+function getFeet($lat1,$lon1,$lat2,$lon2) {
+    $feet = getDistance($lat1,$lon1,$lat2,$lon2) * 3.28;
+    return round($feet,0);
+}
+
+foreach ($profiles as $profile) {
+    if (floatval($profile->gps_lat) != 0 && floatval($profile->gps_long) != 0) {
+        $distance = getFeet($lat,$lon,$profile->gps_lat,$profile->gps_long);
+        $distanceData[$profile->id] = $distance;
+        $profileData[$profile->id] = $profile;
+    }
+}
+asort($distanceData);
+
+<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="a">
+<?
+    foreach ($distanceData as $id => $dist) {
+        $tmpProfile = $profileData[$id];
+        $name = htmlentities( $tmpProfile->name,ENT_QUOTES);
+        if ($dist > 500) {
+            $dist = $dist/5280;
+            $dist = round($dist,1) . " mi";
+        } else {
+            $dist = $dist . " ft";
+        }
+?>
+<li><a href="#profile" onclick="loadProfile(<?=$id?>)"><?=stripslashes($name)?></a><span class="ui-li-count"><?=$dist?></span></li>
+<?  } ?>
+</ul>

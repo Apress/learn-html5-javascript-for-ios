@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+<head>
+    <title>Chapter 9 - Canvas Animation</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+<h1><a href="index.html">Chapter 9 - Canvas Animation</a></h1>
+<hr><style>
+    .workarea {border: 1px solid #000;}
+</style>
+<h2>Slot Machine Example</h2>
+<button onclick="callSpin()">Spin</button><br>
+<canvas id="slot_canvas" width="300" height="80" class="workarea"></canvas>
+
+<script type="text/javascript">
+
+    var canvas = document.querySelector("#slot_canvas");
+    var ctx = canvas.getContext("2d");
+    var delay = 1000 / 30; // 30 FPS
+
+    var img1 = new Image();
+    img1.src = "images/grandview-cafe_thumb.jpg";
+
+    var img2 = new Image();
+    img2.src = "images/the-candle-lab_thumb.jpg";
+
+    var img3 = new Image();
+    img3.src = "images/staufs_thumb.jpg";
+
+    window.onload = function() {
+        ctx.drawImage(img1, 10, 10);
+        ctx.drawImage(img2, 110, 10);
+        ctx.drawImage(img3, 210, 10);
+    }
+
+    function clearCanvas() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.restore();
+    }
+
+    var y,counter,spacing;
+
+    function callSpin() {
+        y = 10;
+        counter = 0;
+        spacing = 10;
+        spin();
+    }
+
+    function spin() {
+        clearCanvas();
+        // slot 1
+        ctx.drawImage(img1, 10, y);
+        ctx.drawImage(img2, 10, y - 80);
+        ctx.drawImage(img3, 10, y - 160);
+        ctx.drawImage(img1, 10, y - 240);
+        // slots 2&3
+        ctx.drawImage(img2, 110, 10);
+        ctx.drawImage(img3, 210, 10);
+
+        // slot 1
+        if (y > 240) {
+            y = 0;
+            counter ++;
+        } else {
+            y = y + spacing;
+        }
+        if (counter < 2) setTimeout('spin()', delay);
+    }
+
+    function selectBusiness() {
+
+    }
+
+
+
+</script>
+
+ <script type="text/javascript">
+
+     var ss = [];
+
+     function SalesSpecial(id, img) {
+         this.id = id;
+         this.img = img;
+     }
+
+     $().ready(function() {
+         $.getJSON('/api/sales.html', function(data) {
+             $.each(data, function(id, img) {
+                 ss.push(new SalesSpecial(id, img));
+             });
+         });
+     });
+
+     function getRandom() {
+         return Math.floor(Math.random() * ss.length + 1);
+     }
+
+     var winner = getRandom();
+     var i1 = new Image().src = ss[getRandom()];
+     var i2 = new Image().src = ss[getRandom()];
+     var i3 = new Image().src = ss[getRandom()];
+
+ </script>
+
+</body>
+</html>

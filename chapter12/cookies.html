@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+    <title>Chapter 12 - Cookies</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="css/ch12.css" type="text/css" />
+</head>
+<body>
+<h1><a href="index.html">Chapter 12 - Cookies</a></h1>
+<hr><button onclick="setCookie('test1','A')">Set Cookie A</button>
+<button onclick="setCookie('test2','B',30)">Set Cookie B</button>
+
+<script type="text/javascript">
+
+    function setCookie(name, value, expire_days) {
+        var expire = new Date();
+        expire.setDate(expire.getDate() + expire_days);
+        var value = escape(value) + ((expire_days == null) ? "" : "; expires=" + expire.toUTCString());
+        document.cookie = name + "=" + value;
+    }
+
+</script>
+
+</body>
+</html>

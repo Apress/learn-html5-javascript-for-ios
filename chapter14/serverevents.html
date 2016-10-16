@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+    <title>Chapter 14 - Server Side Events</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+<h1><a href="index.html">Chapter 14 - Server Side Events</a></h1>
+<hr><h2>Server Side Events</h2>
+<p>See messages below:</p>
+<div id="sse_txt"></div>
+<script type="text/javascript">
+    var source = new EventSource('sse.html');
+    var elt = document.querySelector("#sse_txt");
+
+    source.onopen = function(e) {
+        append("opening connection");
+    };
+    source.onmessage = function(e) {
+        append(e.data);
+    };
+
+    source.onerror = function(e) {
+        append("error");
+    };
+
+    function append(txt) {
+        elt.innerHTML = elt.innerHTML + txt + " -- " + new Date() + " -- <br>";
+    }
+
+</script>
+</body>
+</html>

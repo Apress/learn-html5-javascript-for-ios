@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+    <title>Chapter 12 - Local Storage</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="css/ch12.css" type="text/css" />
+</head>
+<body>
+<h1><a href="index.html">Chapter 12 - Local Storage</a></h1>
+<hr>
+<button onclick="localStorage.setItem('test1','this is a test');">Set Local A</button>
+<button onclick="localStorage.setItem('test2',new TestObject());">Set Local B</button>
+
+<script type="text/javascript">
+
+    function TestObject() {
+        this.id = 1;
+        this.name = "test object";
+        this.description = "this is a test object i am going to put into local storage";
+    }
+
+    window.onload = function() {
+        alert(localStorage.getItem('test1'));
+    }
+</script>
+
+
+
+</body>
+</html>

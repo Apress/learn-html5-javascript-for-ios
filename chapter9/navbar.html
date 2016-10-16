@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+<head>
+    <title>Chapter 9 - More Fun</title>
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+<h1><a href="index.html">Chapter 9 - More Fun</a></h1>
+<hr><style>
+    body{}
+    .workarea {
+        background: #000;
+        position: absolute;
+    }
+
+    #nav1, #nav2, #nav3, #nav4 {
+        border-right: 1px solid white;
+        top: 140px;
+    }
+
+    #nav1 {
+        left: 10px;
+    }
+
+    #nav2 {
+        left: 71px;
+    }
+
+    #nav3 {
+        left: 132px;
+    }
+
+    #nav4 {
+        left: 193px;
+    }
+
+    #nav5 {
+        top: 140px;
+        left: 254px;
+    }
+
+</style>
+
+<h2>Navbar Example</h2>
+<div style="background:#000;top:140px;height:40px;position:absolute;left:0px;width:100%;"></div>
+<canvas id="nav1" width="60" height="40" class="workarea" onclick="nav(1)"></canvas>
+<canvas id="nav2" width="60" height="40" class="workarea" onclick="nav(2)"></canvas>
+<canvas id="nav3" width="60" height="40" class="workarea" onclick="nav(3)"></canvas>
+<canvas id="nav4" width="60" height="40" class="workarea" onclick="nav(4)"></canvas>
+<canvas id="nav5" width="60" height="40" class="workarea" onclick="nav(5)"></canvas>
+
+<script type="text/javascript">
+
+    var navs = [];
+    navs[0] = "";
+    navs[1] = "Home";
+    navs[2] = "Near Me";
+    navs[3] = "Specials";
+    navs[4] = "Parking";
+    navs[5] = "More...";
+
+    window.onload = function() {
+        for (var i = 1; i < navs.length; i++) {
+            drawText(i, "white");
+        }
+    }
+
+    function nav(id) {
+        translateNav(id);
+        for (var i = 1; i < navs.length; i++) {
+            if (id != i) {
+                drawText(i, "white");
+            }
+        }
+    }
+
+    var tmpCtx,tmpCanvas,tmpId;
+    var deg = Math.PI / 180;
+    var delay = 1000 / 30;
+
+    function translateNav(id) {
+        deg = 0;
+        tmpId = id;
+        setTimeout("trans()", delay);
+    }
+
+    function trans() {
+        var raidians = (Math.PI) * (deg/180);
+        tmpCanvas = document.querySelector('#nav' + tmpId);
+        tmpCtx = tmpCanvas.getContext('2d');
+        tmpCtx.clearRect(0, 0, tmpCanvas.width, tmpCanvas.height);
+        tmpCtx.save();
+
+        tmpCtx.translate(tmpCanvas.width/2, tmpCanvas.height/2);
+        tmpCtx.rotate(raidians);
+
+        tmpCtx.textBaseline = "middle";
+        tmpCtx.font = "bold 11px Arial";
+        tmpCtx.textAlign = "center";
+        tmpCtx.fillStyle = "#1E90FF";
+        tmpCtx.fillText(navs[tmpId],0,0);
+        tmpCtx.restore();
+        if (deg < 360) setTimeout("trans()", delay);
+        deg = deg + 30;
+    }
+
+    function drawText(id, color) {
+        var canvas = document.querySelector('#nav' + id);
+        var ctx = canvas.getContext('2d');
+        clearCanvas(canvas, ctx);
+        ctx.font = "bold 11px Arial";
+        ctx.textAlign = "center";
+        ctx.fillStyle = color;
+        ctx.fillText(navs[id], canvas.width / 2, (canvas.height / 2 ) + 5);
+    }
+
+    // canvas.addEventListener("mousedown", downEvent, false);
+    // canvas.addEventListener("touchstart", downEvent, false);
+
+    function downEvent(e) {
+        touchXY(e);
+    }
+
+    function touchXY(e) {
+        if (!e) var e = event;
+        e.preventDefault();
+        curX = e.pageX - canvas.offsetLeft;
+        curY = e.pageY - canvas.offsetTop;
+        drawCircle(curX, curY);
+    }
+
+    function clearCanvas(canvas, ctx) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.save();
+    }
+
+</script>
+
+
+</body>
+<html>

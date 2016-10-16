@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+    <title>Chapter 13 - Jasmine Basic</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+<h1><a href="index.html">Chapter 13 - Jasmine Basic</a></h1>
+<hr><link rel="stylesheet" type="text/css" href="js/jasmine.css">
+<script type="text/javascript" src="js/jasmine.js"></script>
+<script type="text/javascript" src="js/jasmine-html.js"></script>
+
+<script type="text/javascript">
+    // the function part (your code)
+    function hello(name) {
+        // comment out first
+        return "hello " + name;
+    }
+</script>
+
+<script type="text/javascript">
+    // the spec part
+    describe('hello()', function() {
+        it('says hello', function() {
+            expect(hello('scott')).toEqual("hello scott");
+        });
+    });
+
+</script>
+
+<script type="text/javascript">
+    jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
+    jasmine.getEnv().execute();
+</script>
+
+
+</body>
+</html>

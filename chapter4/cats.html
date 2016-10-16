@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+    <title>Chapter 4 - Ajax #3</title>
+    <meta name="viewport" content="width=device-width"/>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="/js/jquery-1.6.4.min.js"></script>
+</head>
+<body>
+<h1><a href="index.html">Chapter 4 - Ajax #3</a></h1>
+<hr>
+<script type="text/javascript">
+
+    $().ready(function() {
+        $.getJSON('js/cats.json', function(data) {
+            var items = [];
+            $.each(data, function(key, val) {
+                items.push('<li id="' + key + '">' + val + '</li>');
+            });
+            $('<ul/>', {
+                'class': 'my-new-list',
+                html: items.join('')
+            }).appendTo('#cats');
+        });
+    });
+
+</script>
+<div id="cats"></div>
+</body>
+</html>

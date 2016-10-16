@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+    <title>Chapter 8 - Animation Basics</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+    <script type="text/javascript" src="/js/jquery-1.6.4.min.js"></script>
+</head>
+<body>
+<h1>Chapter 8 - Animation Basics</h1>
+<hr>
+<style type="text/css">
+#demo1,#demo2,#demo3 {height:100px;width:100px;border:1px solid #ccc;}
+
+@-webkit-keyframes bgchange {
+  from {background: #fff;}
+  to {background: #999;}
+}
+
+
+#demo1.change1 {
+    -webkit-animation-name: bgchange;
+    -webkit-animation-duration:2s;
+    -webkit-animation-timing-function:ease;
+    -webkit-animation-delay:1s;
+    -webkit-animation-iteration-count:5;
+    -webkit-animation-direction:normal;
+}
+
+@-webkit-keyframes mymove {
+    from {top:0px;}
+    to {top:85px;}
+}
+
+#bluedot.drop {
+    position:relative;
+    -webkit-animation-name: mymove;
+    -webkit-animation-duration:2s;
+    -webkit-animation-timing-function:ease;
+    -webkit-animation-delay:1s;
+    -webkit-animation-iteration-count:5;
+    -webkit-animation-direction:normal;
+}
+
+.bluedot {
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background: -webkit-radial-gradient(silver, #0066cc, #000066);
+    position:relative;
+    -webkit-animation-name: bounce;
+    -webkit-animation-duration:4s;
+    -webkit-animation-timing-function:ease;
+    -webkit-animation-delay:1s;
+    -webkit-animation-iteration-count:5;
+    -webkit-animation-direction:normal;
+}
+
+@-webkit-keyframes bounce {
+  0% {top: 0px;left:0px;}
+  25% {top:0px;left:100px;}
+  50% {top:100px;left:100px;}
+  75% {top:100px;left:0px;}
+  100% {top:0px;left:0px;}
+}
+
+</style>
+
+<h2>Animation Demo 1</h2>
+<div id="demo1" class="change1"></div>
+<h2>Animation Demo 2</h2>
+<div id="demo2" class="change2"></div>
+<h2>Animation Demo 3</h2>
+<div id="demo3" class="none"><img src="images/blue_dot.png" id="bluedot" class="drop"></div>
+<h2>Animation Demo 4</h2>
+<div id="demo3" class="change3">
+    <div class="bluedot"></div>
+</div>
+</body>
+</html>

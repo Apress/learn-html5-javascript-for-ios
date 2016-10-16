@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+    <title>Chapter 8 - CSS Tricks</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+    <script type="text/javascript" src="/js/jquery-1.6.4.min.js"></script>
+</head>
+<body>
+<h1>Chapter 8 - CSS Tricks</h1>
+<hr><style>
+    .grad1 {
+        background: -webkit-linear-gradient(top, #999, #fff);
+    }
+
+    .demobox {
+        height: 50px;
+        width: 50px;
+        border: 1px solid #000;
+    }
+
+    .big_sphere {
+        width: 100px;
+        height: 100px;
+        border-radius: 50px;
+        background: -webkit-radial-gradient(silver, #0066cc, #000066);
+    }
+
+    .blue_dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 6px;
+        background: -webkit-radial-gradient(silver, #0066cc, #000066);
+    }
+
+    .reflect1 {
+        -webkit-box-reflect: below 0px -webkit-linear-gradient(transparent, transparent 10%, silver 90%);;
+    }
+
+</style>
+<h2>Linear Gradients</h2>
+<div class="demobox grad1"></div>
+
+<h2>Radial Grandients</h2>
+<div class="big_sphere"></div>
+
+<h2>Reflections</h2>
+<h3 class="reflect1">Reflection of Text</h3>
+
+</body>
+</html>

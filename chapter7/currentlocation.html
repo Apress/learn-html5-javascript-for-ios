@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+    <title>Chapter 7 - Current Location</title>
+    <meta name="viewport" content="width=device-width" />
+    <script type="text/javascript" src="/js/jquery-1.6.4.min.js"></script>
+</head>
+<body>
+<h1>Chapter 7 - Current Location</h1>
+<hr><script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false">
+</script>
+
+<h2>Current Location</h2>
+
+<script type="text/javascript">
+    var map;
+    var bluedot = new google.maps.MarkerImage('blue_dot.png',
+            new google.maps.Size(38, 38),
+            new google.maps.Point(0, 0),
+            new google.maps.Point(19, 19)
+            );
+
+    function initialize(location) {
+        var myOptions = {
+            zoom: 17,
+            center: location,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+
+        map = new google.maps.Map(document.getElementById("basic_map"), myOptions);
+
+        var marker = new google.maps.Marker({
+            position: location,
+            map: map,
+            title:"CodeGin LLC"
+        });
+    }
+    $().ready(function() {
+        var geocoder = new google.maps.Geocoder();
+        geocoder.geocode({ 'address': '1373 grandview ave. columbus ohio 43212'}, function(results, status) {
+            initialize(results[0].geometry.location);
+        });
+        updateLocation = navigator.geolocation.watchPosition(successGPS, errorGPS, {enableHighAccuracy : true});
+    });
+
+    function successGPS(position) {
+        var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        var myLocation = new google.maps.Marker({
+            position: latlng,
+            map: map,
+            icon: bluedot,
+            title:"Me"
+        });
+    }
+
+    function errorGPS() {
+        alert('GPS Error');
+    }
+
+</script>
+<div id="basic_map" style="width:320px;height:240px;"></div>
+</body>
+<html>

@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Chapter 1 - Browser Redirect Example</title>
+</head>
+<body>
+<h1>Chapter 1 - Browser Redirect Example</h1>
+<hr>
+<h1>Apache Redirect (Domain)</h1>
+<pre>
+//This code for redirecting user to the mobile site unless there is a cookie
+RewriteEngine On
+RewriteCond %{HTTP_USER_AGENT} "iphone|ipod|ipad|googlebot-mobile" [NC]
+RewriteCond %{HTTP_COOKIE} !^.*nomobile=true.*$
+RewriteRule ^.*$ https://m.domain.com [R=301]
+</pre>
+<h1>Apache Redirect (Directory)</h1>
+<pre>
+RewriteCond %{REQUEST_URI} !^/m/.*$
+RewriteCond %{HTTP_USER_AGENT} "iphone|ipod|ipad|googlebot-mobile" [NC]
+RewriteCond %{HTTP_COOKIE} !^.*nomobile=true.*$
+RewriteRule ^(.*)$ /m/ [L,R=301]
+</pre>
+
+<h1>JavaScript Redirect</h1>
+
+<p>This is an example of redirecting based on your device.</p>
+<script type="text/javascript">
+
+    var isiPhone = navigator.userAgent.match(/iPhone/i);
+    var isiPod = navigator.userAgent.match(/iPod/i);
+    var isiPad = navigator.userAgent.match(/iPad/i);
+
+    // check for mobile iOS device
+    if (isiPhone || isiPod || isiPad) {
+        if (!bypassRedirect()) {
+            alert("redirecting user here");
+            //	window.location = '/m';
+        } else {
+            alert("user bypass message is true");
+        }
+    } else {
+        alert("not a mobile device");
+    }
+
+    function bypassRedirect() {
+        return false;
+        // this logic will be added later in Chapter 12.
+    }
+
+</script>
+
+</body>
+<html>

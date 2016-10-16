@@ -1,0 +1,59 @@
+<h3>Audio & Video Tours</h3>
+<p style="font-size:10px;padding-bottom:10px;">Click below to take a tour of The Avenue.</p>
+<ul data-role="listview" data-theme="c" data-dividertheme="a">
+    <li>
+    <a href="atours.php" rel="external">
+    <img src="/m/images/music-icon.png" class="ui-li-thumb" style="padding:10px;">
+    <h3 class="ui-li-heading">Audio Tours</h3>
+    <p>Five audio tours of Grandview <br>Avenue either sequencial <br>or by nearest location.</p>
+    </a></li>
+    <li>
+    <a href="vtours.php" rel="external">
+    <img src="/m/images/video-icon.png" class="ui-li-thumb" style="padding:10px;">
+    <h3 class="ui-li-heading">Video Tours</h3>
+    <p class="ui-li-desc">Three video tours of Grandview <br>Avenue either sequencial <br>or by nearest location.</p>
+    </a></li>
+</ul>
+---
+<li>
+<a href="amap.php#1" rel="external">
+<img src="/m/images/music-icon.png" class="ui-li-thumb" style="padding:10px;">
+<h3 class="ui-li-heading">South Avenue</h3>
+<p class="ui-li-desc">A short description of <br>Grandview Avenue looking <br>north from First Avenue.</p>
+</a></li>
+<script>
+//---
+addMarker(new google.maps.LatLng(39.98213, -83.0451)); // South Gradview
+addMarker(new google.maps.LatLng(39.983769,-83.044948)); // Staufs Coffee
+addMarker(new google.maps.LatLng(39.985027,-83.044707)); // Grandview Cafe
+addMarker(new google.maps.LatLng(39.986901,-83.044939)); // Caribou Coffee
+addMarker(new google.maps.LatLng(39.988613,-83.044334)); // North Grandview
+//---
+var markerCount = 1;
+function addMarker(latlon) {
+  var marker = new google.maps.Marker({
+    position : latlon,
+    map : map,
+    icon : "http://www.google.com/mapfiles/markerA.png",
+    title : "Audio Spot",
+    clickable: true
+  });
+
+  google.maps.event.addListener(marker, 'click', function() {
+    playAudio(markerCount);
+  });
+  markerCount++;
+ }
+
+ function playAudio(audioFile) {
+    var audioControl = document.querySelector("#audio_control");
+    audioControl.src = 'media/tour_' + audioFile + '.m4a';
+    audioControl.play();
+  }
+  //---
+$(document).ready(function() {
+  loadMap();
+  playAudio(location.hash);
+   });
+
+</script>

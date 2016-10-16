@@ -1,0 +1,9 @@
+@fontface {
+    font-family:arial;
+}
+
+body {
+    margin: 0;
+    padding: 10px;
+    background-color: #fff;
+}

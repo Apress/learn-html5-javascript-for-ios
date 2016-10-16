@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+    <title>Chapter 13 - TDD Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+<h1><a href="index.html">Chapter 13 - TDD Example</a></h1>
+<hr>
+<script type="text/javascript">
+
+    function assertString(expected, actual) {
+        return (expected == actual);
+    }
+
+    window.onload = function testHello() {
+        if (assertString("hello scott", hello("scott"))) {
+            alert("hello works");
+        } else {
+            alert("hello fails");
+        }
+    }
+
+
+    function hello(name) {
+        return "hello " + name;
+    }
+
+
+</script>
+
+
+</body>
+</html>

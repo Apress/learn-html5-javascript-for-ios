@@ -1,0 +1,60 @@
+<style>
+    body {margin:0;}
+    #panner {
+        height: 480px;
+        width: 320px;
+        background-size: 3072px 673px;
+        background-repeat: repeat-x;
+        background-position: 0% 0%;
+        background-image: url('images/pan1.jpg');
+    }
+</style>
+<div id="panner"></div>
+---
+<script type="text/javascript">
+var heading;
+var showEgg = false;
+
+function panImg(x,y) {
+    var panElt = document.querySelector("#panner");
+    panElt.style.backgroundPosition = x + "% " + y + "%";
+}
+
+window.ondeviceorientation = function(e) {
+    heading = Math.round(e.webkitCompassHeading);
+    if (showEgg) {
+        var headingAsPercent = (heading/360) * 100;
+        var beta = Math.round(e.beta);
+        var betaAsPercent = (Math.abs(90-beta) / 30) * 100;
+        panImg(headingAsPercent,betaAsPercent);
+    }
+}
+
+function successGPS(position) {
+    var lat = position.coords.latitude;
+    var lon = position.coords.longitude;
+    var isNearEgg = testDistance(39.98600278, -83.04510000, lat, lon);
+    if (isNearEgg & (heading > 90 && heading < 180 ) {
+        showEgg = true;
+    }
+}
+
+function testDistance(lat1, lon1, lat2, lon2) {
+    var lat = lat1 * 10 ^ 6 - lat2 * 10 ^ 6; // increased size to avoid rounding
+    var lon = lon1 * 10 ^ 6 - lon2 * 10 ^ 6; // increased size to avoid rounding
+    if ((lat ^ 2 + lon ^ 2) ^ .5 < 100) { // close to area
+        return true;
+    }
+    return false;
+}
+
+function errorGPS() {
+   alert('GPS Error');
+}
+
+function watchGPS() {
+    navigator.geolocation.getCurrentPosition(successGPS, errorGPS,{enableHighAccuracy : true});
+    setTimeout("watchGPS()",30000);
+}
+
+</script>

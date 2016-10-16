@@ -1,0 +1,28 @@
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false">
+</script>
+<script type="text/javascript">
+    function initialize() {
+        var latlng = new google.maps.LatLng(<?=$profiles->gps_lat?>, <?=$profiles->gps_long?>);
+        var myOptions = {
+            zoom: 16,
+            center: latlng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("basic_map"),
+                myOptions);
+        addMarker(latlng,map);
+    }
+    $().ready(function() {
+        initialize();
+    });
+
+    function addMarker(latlon,map) {
+      var marker = new google.maps.Marker( {
+        position : latlon,
+        map : map,
+        icon : "http://www.google.com/mapfiles/marker.png",
+        title : "Location "
+      });
+    }
+</script>
+<div id="basic_map" style="width:320px;height:240px;margin-left:-15px;"></div>

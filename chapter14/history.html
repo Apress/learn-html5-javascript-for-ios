@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+    <title>Chapter 14 - History Management</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+<h1><a href="index.html">Chapter 14 - History Management</a></h1>
+<hr><button onclick="changeHash()">Web Socket Test</button>
+<div id="something">This is some content...</div>
+
+<script type="text/javascript">
+var counter = 0;
+function changeHash() {
+    document.location = "history.html#"+counter;
+    if (counter < 5) setTimeout("changeHash()",2000);
+    counter++;
+}
+
+window.onhashchange = function() {
+    var elt = document.querySelector("#something");
+    if (counter == 2) {
+        elt.innerHTML = "This us something else completely...";
+    }
+
+    if (counter == 4) {
+        elt.innerHTML = "Yet, something else you might want to read...";
+    }
+}
+</script>
+</body>
+</html>

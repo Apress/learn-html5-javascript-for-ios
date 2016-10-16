@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+    <title>Chapter 4 - JSON</title>
+    <meta name="viewport" content="width=device-width"/>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="/js/jquery-1.6.4.min.js"></script>
+</head>
+<body>
+<h1><a href="index.html">Chapter 4 - JSON</a></h1>
+<hr>
+<p>An alert of the JSON Object below:</p>
+<pre>
+{
+    "id" : 1,
+    "name": "Scott"
+}
+
+</pre>
+<script>
+
+    var json = '{"id":1,"name":"Scott"}';
+    var obj1 = eval("(" + json + ")");
+    var obj2 = JSON.parse(json);
+    alert(obj1.name + ", id= " + obj2.id);
+
+</script>
+
+</body>
+</html>

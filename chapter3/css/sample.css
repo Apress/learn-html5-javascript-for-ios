@@ -1,0 +1,149 @@
+@fontface {
+    font-family:arial;
+    font-size:100%;
+}
+
+body {
+    margin: 0;
+    font-family: helvetica, arial;
+    background-color: #ddd;
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: blue;
+}
+
+header, nav, footer {
+}
+
+header {
+    text-align: center;
+    height: 50px;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#444), to(#000));
+}
+
+header h1 {
+    color: #fff;
+ 
+}
+
+nav ul {
+    list-style: none;
+    margin: 10px;
+    padding: 0;
+}
+
+nav ul li a {
+    background-color: #fff;
+    border: 1px solid #999;
+    color: #222;
+    display: block;
+    font-weight: bold;
+    margin-bottom: -1px;
+    padding: 12px 10px;
+    text-decoration: none;
+}
+
+nav ul.num2 li:first-child a {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+nav ul.num2 li:last-child a {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+@media (orientation:portrait) {
+
+}
+
+@media (orientation:landscape) {
+
+}
+
+li.arrow {
+
+}
+
+li.arrow a {
+    background-image: url(../images/chevron_36.png);
+    background-size: 22px;
+    background-position: right center;
+    background-position-x: 98%;
+    background-position-y: 50%;
+    background-repeat: no-repeat;
+    background-repeat-x: no-repeat;
+    background-repeat-y: no-repeat;
+}
+
+.slide_in {
+    -webkit-transform: translateX(0);
+    -webkit-animation-name: slideinfromright;
+}
+
+.slide_out {
+    -webkit-transform: translateX(-100%);
+    -webkit-animation-name: slideouttoleft;
+}
+
+@-webkit-keyframes slideinfromright {
+    from { -webkit-transform: translateX(100%); }
+    to { -webkit-transform: translateX(0); }
+}
+@-webkit-keyframes slideouttoleft {
+    from { -webkit-transform: translateX(0); }
+    to { -webkit-transform: translateX(-100%); }
+}
+
+.button, .back {
+    font-size: 16px;
+    line-height: 18px;
+    text-shadow: #333 1px 1px 2px;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    border-width: 10px;
+    padding: 5px 10px;
+}
+
+.button {
+    -webkit-border-image: url("../images/round.png") 0 14 0 14 stretch;
+}
+
+.back {
+    height: 30px;
+    line-height: 14px;
+    font-weight: normal;
+    font-size: 12px;
+    padding: 5px;
+    color: #fff;
+    -webkit-border-image: url("../images/back.png") 0 14 0 14 stretch;
+}
+
+nav {
+
+}
+
+nav.ipad {
+    width: 30%;
+    margin-right: 1%;
+    float: left;
+}
+
+section.ipad {
+    width: 65%;
+    float: left;
+    padding: 10px;
+}
+
+footer {
+
+    display: none;
+}
+

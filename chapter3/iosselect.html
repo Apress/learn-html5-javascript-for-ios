@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <title>IOS Selector</title>
+    <meta name="viewport" content="width=device-width" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="apple-touch-icon" href="images/home-icon.png"/>
+    <link rel="apple-touch-startup-image" href="images/splash.png">
+<style>
+
+@media (orientation:portrait) {
+	.portrait {display:block;}
+	.landscape {display:none;}
+}
+
+@media (orientation:landscape) {
+    .landscape {display:block;}
+	.portrait {display:none;}
+}
+
+.iphone4 {display:none;}
+.iphone {display:none;}
+.ipad {display:none;}
+
+@media screen and (-webkit-min-device-pixel-ratio:2) {
+	.iphone4 {display:block;}
+}
+
+@media screen and (min-device-width: 768px){
+	.ipad {display:block;color:green;}
+}
+
+@media screen and (-webkit-max-device-pixel-ratio : 1.5) and (max-device-width: 480px){
+	.iphone {display:block;}
+}
+</style>
+</head>
+<body>
+<p>Rotate based on iPhone or iPad.</p>
+<div class="landscape">Landscape</div>
+<div class="portrait">Portrait</div>
+<div class="ipad">iPad</div>
+<div class="iphone">iPhone</div>
+<div class="iphone4">iPhone4</div>
+<p>You can also save this page to your home screen.</p>
+</body>
+</html>

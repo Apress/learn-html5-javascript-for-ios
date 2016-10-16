@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+    <title>Chapter 14 - Web Workers</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+<h1><a href="index.html">Chapter 14 - Web Workers</a></h1>
+<hr><h2>Workers Example</h2>
+<button onclick="callWorker()">Worker Example</button><br>
+<div>Worker Count: <span id="count"></span></div>
+
+<script type="text/javascript">
+
+    var worker = new Worker("js/worker.js");
+
+    worker.onmessage = function(evt) {
+        document.querySelector("#count").innerHTML = evt.data;
+    };
+
+    function callWorker() {
+        worker.postMessage();
+    }
+</script>
+</body>
+</html>

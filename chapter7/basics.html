@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+    <title>Chapter 7 - GPS Basics</title>
+    <meta name="viewport" content="width=device-width" />
+    <script type="text/javascript" src="/js/jquery-1.6.4.min.js"></script>
+</head>
+<body>
+<h1>Chapter 7 - GPS Basics</h1>
+<hr><script>
+
+    function getGPS(){
+        navigator.geolocation.getCurrentPosition(successGPS, errorGPS, {enableHighAccuracy : true});
+    }
+
+    function successGPS(position) {
+        var lat = position.coords.latitude;
+	    var lon = position.coords.longitude;
+	    var curHTML = $('#gps_coords').html() + "lat="+lat + ",lon="+lon+"<br>";
+        $('#gps_coords').html(curHTML);
+	}
+	
+	function errorGPS() {
+        alert('GPS Error');
+	}
+
+    var updateLocation;
+    
+	function watchGPS() {
+	    updateLocation = navigator.geolocation.getCurrentPosition(successGPS, errorGPS,{enableHighAccuracy : true});
+	}
+
+    navigator.geolocation.clearWatch(updateLocation);
+
+
+    
+</script>
+<button onclick="watchGPS()">Get GPS Coordinates</button>
+
+<h2>GPS Coords Below</h2>
+<div id="gps_coords"></div>
+</body>
+<html>

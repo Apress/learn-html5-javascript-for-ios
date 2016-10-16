@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+    <title>Chapter 9 - Drawing Basics</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+<h1><a href="index.html">Chapter 9 - Drawing Basics</a></h1>
+<hr><style>
+    .workarea {border: 1px solid #000;}
+</style>
+<h2>Rectangle</h2>
+<canvas id="rectangle" class="workarea" width="150" height="150"></canvas>
+<h2>Triangle</h2>
+<canvas id="triangle" class="workarea" width="150" height="150"></canvas>
+<h2>Circle</h2>
+<canvas id="circle" class="workarea" width="150" height="150"></canvas>
+<h2>Text</h2>
+<canvas id="txt" class="workarea" width="300" height="50"></canvas>
+
+<script type="text/javascript">
+
+    window.onload = function() {
+        drawRectangle();
+        drawTriangle();
+        drawCircle(75, 75, 50);
+        drawText();
+    }
+
+    function drawRectangle() {
+        var canvas = document.querySelector('#rectangle');
+        var ctx = canvas.getContext('2d');
+        ctx.fillStyle = 'rgb(255,0,0)';
+        ctx.fillRect(25, 25, 100, 100);
+    }
+
+    function drawTriangle() {
+        var canvas = document.querySelector('#triangle');
+        var ctx = canvas.getContext('2d');
+        ctx.strokeStyle = 'rgb(0,255,0)';
+        ctx.beginPath();
+        ctx.moveTo(25, 125);
+        ctx.lineTo(75, 25);
+        ctx.lineTo(125, 125);
+        ctx.closePath();
+        ctx.stroke();
+    }
+
+    function drawCircle(x, y, radius) {
+        var canvas = document.querySelector('#circle');
+        var ctx = canvas.getContext("2d");
+        ctx.beginPath();
+        ctx.arc(x, y, radius, 0, Math.PI * 2, false);
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = "rgb(0,0,255)";
+        ctx.stroke();
+        ctx.closePath();
+    }
+
+    function drawText() {
+        var canvas = document.querySelector('#txt');
+        var ctx = canvas.getContext('2d');
+        ctx.font = "30px Arial";
+        ctx.textAlign = "center";
+        ctx.fillStyle = "blue";
+        ctx.fillText("This is text.", canvas.width / 2, (canvas.height / 2 ) + 10);
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+
+<!doctype html>
+<html>
+<head>
+    <title>Chapter 13 - Automated Testing</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+<h1><a href="index.html">Chapter 13 - Benchmark Testing</a></h1>
+<hr><button name="test" onclick="test()">Test Button</button>
+<script type="text/javascript">
+function test() {
+    alert("this is a test alert");
+}
+</script>
+<h2>The Install</h2>
+<pre>
+sudo gem update --system
+sudo gem install rb-appscript
+sudo gem install safariwatir
+</pre>
+
+<h2>The Test Script</h2>
+<pre>
+# test script
+require 'rubygems'
+require 'safariwatir'
+
+browser = Watir::Safari.new
+browser.goto("http://dev.learnhtml5book.com")
+browser.link(:text, "Chapter 13 - Mobile Testing").click
+browser.link(:text, "Watir").click
+browser.button(:name, "test").click
+
+</pre>
+
+
+</body>
+</html>

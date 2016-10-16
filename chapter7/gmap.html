@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+    <title>Chapter 7 - Google Map Basics</title>
+    <meta name="viewport" content="width=device-width" />
+    <script type="text/javascript" src="/js/jquery-1.6.4.min.js"></script>
+</head>
+<body>
+<h1>Chapter 7 - Google Map Basics</h1>
+<hr><h2>Basic Map</h2>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false">
+</script>
+<script type="text/javascript">
+  function initialize() {
+    var latlng = new google.maps.LatLng(39.985764, -83.044776);
+    var myOptions = {
+      zoom: 10,
+      center: latlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map(document.getElementById("basic_map"),
+        myOptions);
+  }
+    $().ready(function(){
+       initialize();
+    });
+</script>
+<div id="basic_map" style="width:320px;height:240px;"></div>
+</body>
+<html>

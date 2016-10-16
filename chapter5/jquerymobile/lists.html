@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<meta charset=Óutf-8Ó>
+<head>
+    <title>JQuery Mobile</title>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="../../css/jquery.mobile-1.0b3.min.css" />
+    <script src="../../js/jquery-1.6.4.min.js"></script>
+    <script src="../../js/jquery.mobile-1.0b3.min.js"></script>
+</head>
+<body>
+<div data-role="page" >
+	<header data-role="header" data-theme="b">
+		<h1>List Example</h1>
+	</header>
+	<section data-role="content">
+	<h1>Basic List</h1>
+    <ul data-role="listview">
+        <li><a href="">Link 1</a></li>
+        <li><a href="">Link 2</a></li>
+    </ul>
+
+	<h1>List with Counts</h1>
+	<ul data-role="listview">
+        <li><a href="">Link 1</a><span class="ui-li-count ui-btn-up-c ui-btn-corner-all">11</span></li>
+        <li><a href="">Link 2</a><span class="ui-li-count ui-btn-up-c ui-btn-corner-all">22</span></li>
+    </ul>
+
+    <h1>List with Thumbnails</h1>
+        <ul data-role="listview">
+        <li><a href="index.html" class="ui-link-inherit">
+			<img src="staufs_thumb.jpg" class="ui-li-thumb">
+				<h3 class="ui-li-heading">Staufs</h3>
+				<p class="ui-li-desc">Staufs Coffee</p>
+			</a>
+		</li>
+		<li><a href="index.html" class="ui-link-inherit">
+			<img src="vino-vino_thumb.jpg" class="ui-li-thumb">
+				<h3 class="ui-li-heading">Vino Vino</h3>
+				<p class="ui-li-desc">Vino Vino Restaurant</p>
+			</a>
+		</li>
+     </ul>
+</section>
+	<footer data-role="footer">
+		<h4>Footer</h4>
+	</footer>
+</div>
+</body>
+</html>

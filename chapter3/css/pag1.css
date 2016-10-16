@@ -1,0 +1,9 @@
+/** iphone **/
+@media screen and (-webkit-max-device-pixel-ratio : 1.5) and (max-device-width: 480px){
+}
+/** iphone 4 **/
+@media screen and (-webkit-min-device-pixel-ratio:2) {
+}
+/** ipad **/
+@media screen and (min-device-width: 768px){
+}
